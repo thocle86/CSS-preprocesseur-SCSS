@@ -1,0 +1,81 @@
+$color-1: #DB6A0A;
+$color-2: #F0F0F0;
+$color-3: #F7DD04;
+$color-4: #323023;
+
+* {
+	margin: 0;
+}
+nav {
+	background-color: $color-1;
+	display: flex;
+    color: $color-2;
+    margin: 0 auto;
+	padding: 0px 30px;
+	font-size: 20px;
+	ul {
+		display: flex;
+		list-style: none;
+		li {
+			padding: 10px 40px;
+		}
+	}
+}
+//définition des anneaux
+@mixin ring ($sizeRing, $colorRing) {
+	width: $sizeRing;
+	height: $sizeRing;
+	border-radius: $sizeRing;
+	border: solid $sizeRing/8 $colorRing;
+	box-shadow: $sizeRing/20 $sizeRing/20 $sizeRing/20 darken($colorRing, 20%);
+	padding: 0;
+}
+main {
+	display: flex;
+	flex-direction: column;
+}
+.container-my-precious {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	font-size: 50px;
+	h2 {
+		padding: 0px 50px;
+	}
+}
+.container-the-one-ring {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	font-size: 50px;
+	h2 {
+		padding: 70px 50px;
+	}
+}
+
+.my-precious {
+	@include ring (80px, $color-1);
+}
+.the-one-ring {
+	@include ring (200px, $color-3);
+}
+.container-please-find-it {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 50px;
+	font-size: 50px;
+	div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 10px;
+	}
+}
+@for $i from 1 through 6 {
+	.please-find-it-#{$i} {
+		$sizeRing: $i * 10px + 50px;
+		@include ring ($sizeRing, $color-4);
+		margin: 0 -($sizeRing/6);
+	}
+}
